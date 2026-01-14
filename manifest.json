@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Chzzk Timestamp Memo",
+  "version": "1.1.0",
+  "description": "치지직 라이브 경과시간을 p 키로 저장합니다.",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://chzzk.naver.com/*",
+    "https://*.naver.com/*"
+  ],
+  "action": {
+    "default_title": "Timestamp Memo",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chzzk.naver.com/*",
+        "https://*.naver.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ]
+}

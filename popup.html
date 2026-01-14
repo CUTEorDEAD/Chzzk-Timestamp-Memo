@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Timestamp Memo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", sans-serif;
+      width: 280px;
+      background: #111;
+      color: #eee;
+    }
+    header {
+      padding: 10px 12px;
+      border-bottom: 1px solid #2a2a2a;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    h1 {
+      font-size: 13px;
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+    .hint {
+      font-size: 11px;
+      color: #aaa;
+      margin-top: 4px;
+    }
+    .section {
+      padding: 10px 12px;
+      border-bottom: 1px solid #2a2a2a;
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    label {
+      font-size: 12px;
+      color: #ddd;
+      white-space: nowrap;
+    }
+    input[type="range"] {
+      width: 100%;
+    }
+    .value {
+      font-variant-numeric: tabular-nums;
+      font-size: 12px;
+      color: #fff;
+      min-width: 46px;
+      text-align: right;
+    }
+    .list {
+      max-height: 240px;
+      overflow: auto;
+      padding: 8px 12px 12px;
+    }
+    .item {
+      background: #1b1b1b;
+      border: 1px solid #2c2c2c;
+      border-radius: 8px;
+      padding: 8px 10px;
+      margin-top: 8px;
+      font-variant-numeric: tabular-nums;
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn {
+      cursor: pointer;
+      border: 1px solid #2c2c2c;
+      background: #1a1a1a;
+      color: #eee;
+      border-radius: 8px;
+      padding: 6px 8px;
+      font-size: 12px;
+    }
+    .btn:hover { background: #222; }
+    .btn-danger { border-color: #5a2a2a; }
+    .btn-danger:hover { background: #2a1414; }
+    .btn-mini {
+      padding: 4px 6px;
+      font-size: 11px;
+      border-radius: 7px;
+    }
+    .empty {
+      padding: 14px 12px;
+      color: #aaa;
+      font-size: 12px;
+    }
+    .footer {
+      padding: 10px 12px;
+      display: flex;
+      gap: 8px;
+    }
+    .footer .btn { flex: 1; }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Timestamp Memo</h1>
+      <div class="hint">단축키: 기본 p (Chrome 확장 단축키에서 변경 가능)</div>
+    </div>
+  </header>
+
+  <div class="section">
+    <div class="row">
+      <label for="offset">저장 보정</label>
+      <div class="value" id="offsetValue">-0s</div>
+    </div>
+    <input id="offset" type="range" min="0" max="5" step="1" value="0" />
+    <div class="hint">예: -5초면 00:10:15 → 00:10:10 저장</div>
+  </div>
+
+  <div class="footer">
+    <button class="btn" id="copyAll">전체 복사</button>
+    <button class="btn btn-danger" id="clearAll">전체 삭제</button>
+  </div>
+
+  <div class="list" id="list"></div>
+  <div class="empty" id="empty" style="display:none;">저장된 시간이 없습니다.</div>
+
+  <script src="popup.js"></script>
+    <div class="hint">치지직 화면(페이지)에 포커스가 있어야 동작합니다.</div>
+  </div>
+
+</body>
+</html>
